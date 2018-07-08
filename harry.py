@@ -6,10 +6,6 @@ import requests
 import json
 from random import randint
 
-
-
-
-
 client = discord.Client()
 @client.event
 async def on_ready():
