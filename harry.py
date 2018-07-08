@@ -1,10 +1,6 @@
-import random
 import discord
-import asyncio
-from discord.utils import get
-import requests
-import json
-from random import randint
+import os
+
 
 client = discord.Client()
 @client.event
@@ -70,6 +66,5 @@ async def on_message(message):
         embed2 = discord.Embed(title='MENSAGEM ENVIADA:',description="<:ok:440061516365037569> `SUCESSO:` \nMensagem enviada com sucesso para todos membros do servidor",color=0xff0101)
         embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
         await client.send_message(message.channel, embed=embed2)
-        
-        
+
 client.run(str(os.environ.get('TOKEN')))
