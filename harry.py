@@ -81,5 +81,6 @@ async def on_message(message):
         embed2 = discord.Embed(title='MENSAGEM ENVIADA:',description="<:ok:440061516365037569> `SUCESSO:` \nMensagem enviada com sucesso para todos membros do servidor",color=0xff0101)
         embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
         await client.send_message(message.channel, embed=embed2)
-
-client.run('NDU4NzMxMTc1ODc2MzYyMjQw.Dgr6RA._yNBvgKa3ZXplPpWgEuQjSAkWCw')
+        
+        
+client.run(str(os.environ.get('TOKEN')))
