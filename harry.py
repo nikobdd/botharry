@@ -39,11 +39,6 @@ async def on_message(message):
         setar = set1
 
     if message.content.lower().startswith(',msg'):
-        role = discord.utils.get(message.server.roles, name='BotHarry')
-        if not role in message.author.roles:
-            embed1 = discord.Embed(title='OCORREU UM ERRO:', description="<:no:440061539026731008> `SEM PERMISSÃO:` Você precisa do cargo `Harry`",color=0xff0101)
-            embed1.set_footer(text="?  S P E C T R U M  ?", icon_url="https://i.imgur.com/320SovU.png")
-            return await client.send_message(message.channel, embed=embed1)
         msg = message.content.strip(',msg')
         embed2 = discord.Embed(title='ENVIANDO MENSAGEM...',description='<:conometro:449635557753094164> `MENSAGEM ESCOLHIDA:`\n' + (msg),color=0xff0101)
         embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
