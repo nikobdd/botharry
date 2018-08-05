@@ -30,6 +30,28 @@ async def on_message(message):
         except discord.errors.Forbidden:
             return await client.send_message ( message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.' )
 
+        
+    if message.content.lower ().startswith ( "moreno,ban" ):
+        try:
+            
+            if not message.author.server_permissions.ban_members:
+                return await client.send_message ( message.channel,' <:fire:457629062064635905>️Permissão Insuficiente' )
+            author = message.author.mention
+            user = message.mentions[0]
+            embed1 = discord.Embed ( color=0xff0101)
+            embed1.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
+            embed1.set_image (url="https://media.discordapp.net/attachments/459946629840109576/475806187963547669/5694108_orig.gif" )
+            await client.ban ( user )
+            embed1.add_field (name="***✠ SPECTRUM ✠***",value='{}***Foi Banido Com Sucesso Senhor*** **{}**'.format ( user.mention, author ) )
+            embed1.set_image (url="https://media.discordapp.net/attachments/459946629840109576/475806187963547669/5694108_orig.gif" )
+            embed1.set_footer (text=client.user.name, icon_url=client.user.avatar_url )
+            await client.send_message ( message.channel, embed=embed1 )
+        except discord.errors.Forbidden:
+            return await client.send_message ( message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.' )
+        
+        
+        
+        
 
 
     if message.content.startswith(',setar'):
