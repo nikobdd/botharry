@@ -89,7 +89,7 @@ async def on_message(message):
         
         
         
-     if message.content.lower ().startswith ( ',py' ):
+    if message.content.lower ().startswith ( ',py' ):
         msg = message.content.strip ( ',py' )
         await client.delete_message ( message )
         await client.send_message ( message.channel,'<:rotating_light:474586348716556319> ' + ' ***Sistema De Monitoramento  ✠ S P E C T R U M  ✠***:' + '\n```python\n{}\n```'.format (msg ) )
@@ -118,7 +118,7 @@ async def on_message(message):
         
         
         
- @client.event
+@client.event
 async def on_member_join(member):
     role1 = "♰ 𝑀𝐸𝑀𝐵𝐸𝑅𝒮 ♰"
     role = discord.utils.find ( lambda r: r.name == "{}".format ( role1 ), member.server.roles )
