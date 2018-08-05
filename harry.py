@@ -118,17 +118,7 @@ async def on_message(message):
         
         
         
-@client.event
-async def on_member_join(member):
-    role1 = "♰ 𝑀𝐸𝑀𝐵𝐸𝑅𝒮 ♰"
-    role = discord.utils.find ( lambda r: r.name == "{}".format ( role1 ), member.server.roles )
-    await client.add_roles ( member, role )
-    embedvindo = discord.Embed ( color=0x5c02db, title='***🎈 Sejá Bem Vindo (a)***',description='✨' + member.mention + ' ***ao  ✠  S P E C T R U M  ✠  Esperamos Que Se Divitar  🎆 🎊***' )
-    embedvindo.set_thumbnail ( url=member.avatar_url )
-    embedvindo.set_author ( name=member.name, icon_url=member.avatar_url )
-    mensagemvindo2 = "💬-chat-livre"
-    bemvindo = discord.utils.find ( lambda c: c.name == "{}".format ( mensagemvindo2 ), member.server.channels )
-    await client.send_message ( bemvindo, embed=embedvindo )           
+        
        
 
 client.run(str(os.environ.get('TOKEN')))
