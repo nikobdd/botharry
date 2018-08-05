@@ -63,7 +63,7 @@ async def on_message(message):
         
         
         
-    if not (not message.content.startswith ( '.fale' ) and not message.content.startswith ( '.falar' )):
+    if not (not message.content.startswith ( ',fale' ) and not message.content.startswith ( ',falar' )):
         if message.author.id == 'ID DO BOT':
             return
         try:
@@ -77,7 +77,7 @@ async def on_message(message):
         
         
         
-    if message.content.startswith ( '.membros' ):
+    if message.content.startswith ( ',membros' ):
         # Importar time e datetime
         user = message.author.name
         horario = datetime.datetime.now ().strftime ( "%H:%M:%S" )
@@ -89,8 +89,8 @@ async def on_message(message):
         
         
         
-     if message.content.lower ().startswith ( '.py' ):
-        msg = message.content.strip ( '.py' )
+     if message.content.lower ().startswith ( ',py' ):
+        msg = message.content.strip ( ',py' )
         await client.delete_message ( message )
         await client.send_message ( message.channel,'<:rotating_light:474586348716556319> ' + ' ***Sistema De Monitoramento  ✠ S P E C T R U M  ✠***:' + '\n```python\n{}\n```'.format (msg ) )
        
@@ -98,7 +98,7 @@ async def on_message(message):
         
         
         
-    if message.content.startswith ( '.uptime' ):
+    if message.content.startswith ( ',uptime' ):
         await client.send_message ( message.channel,"***Estou online a {0} hora(s) e {1} minuto(s)***".format ( hour, minutes ) )
 
     async def tutorial_uptime():
