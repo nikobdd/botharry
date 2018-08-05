@@ -12,24 +12,23 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith("harry,ban"):
+    if message.content.lower ().startswith ( "harry,ban" ):
         try:
 
-            if not message.author.server_permissions.administrator:
-                return await client.send_message(message.channel,'<:tane:457629062064635905>?Permissão Insuficiente')
+            if not message.author.server_permissions.ban_members:
+                return await client.send_message ( message.channel,' <:fire:457629062064635905>️Permissão Insuficiente' )
             author = message.author.mention
             user = message.mentions[0]
-            embed1 = discord.Embed(color=0xff0101)
-            embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-            embed1.set_image(url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif")
-            await client.ban(user)
-            embed1.add_field(name="<:boxing_glove:457628939641421824> **✠ SPECTRUM ✠**",value='{}***Foi Banido Com Sucesso Senhor***: **{}**'.format(user.mention, author))
-            embed1.set_image(url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif")
-            embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-            await client.send_message(message.channel, embed=embed1)
+            embed1 = discord.Embed ( color=0xff0101)
+            embed1.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
+            embed1.set_image (url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif" )
+            await client.ban ( user )
+            embed1.add_field (name="***✠ SPECTRUM ✠***",value='{}***Foi Banido Com Sucesso Senhor*** **{}**'.format ( user.mention, author ) )
+            embed1.set_image (url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif" )
+            embed1.set_footer (text=client.user.name, icon_url=client.user.avatar_url )
+            await client.send_message ( message.channel, embed=embed1 )
         except discord.errors.Forbidden:
-            return await client.send_message(message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.')
-
+            return await client.send_message ( message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.' )
 
 
 
