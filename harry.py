@@ -63,6 +63,61 @@ async def on_message(message):
         
         
         
+    if not (not message.content.startswith ( '.fale' ) and not message.content.startswith ( '.falar' )):
+        if message.author.id == 'ID DO BOT':
+            return
+        try:
+            mensagem = message.content[7:]
+            await client.delete_message ( message )
+            await client.send_message ( message.channel, mensagem, tts=False )
+            print ( 'Fale on' )
+            print ( mensagem )
+        except:
+            await client.send_message ( message.channel, "Você precisa escrever algo para eu falar!" )        
+        
+        
+        
+    if message.content.startswith ( '.membros' ):
+        # Importar time e datetime
+        user = message.author.name
+        horario = datetime.datetime.now ().strftime ( "%H:%M:%S" )
+        membros_embed = discord.Embed ( title="\n",description="***Quantidade De Membros No Servidor! :inbox_tray: ***",color=0x5c02db )
+        membros_embed.set_thumbnail ( url=message.server.icon_url )
+        membros_embed.set_footer ( text="Comando requisitado por {} • Hoje às {}".format ( user, horario ) )
+        membros_embed.add_field ( name="Membros no servidor:***", value=len ( message.server.members ), inline=True )
+        await client.send_message ( message.channel, embed=membros_embed )
+        
+        
+        
+     if message.content.lower ().startswith ( '.py' ):
+        msg = message.content.strip ( '.py' )
+        await client.delete_message ( message )
+        await client.send_message ( message.channel,'<:rotating_light:474586348716556319> ' + ' ***Sistema De Monitoramento  ✠ S P E C T R U M  ✠***:' + '\n```python\n{}\n```'.format (msg ) )
+       
+        
+        
+        
+        
+    if message.content.startswith ( '.uptime' ):
+        await client.send_message ( message.channel,"***Estou online a {0} hora(s) e {1} minuto(s)***".format ( hour, minutes ) )
+
+    async def tutorial_uptime():
+        await client.wait_until_ready ()
+        global minutes
+        minutes = 0
+        global hour
+        hour = 0
+        while not client.is_closed:
+            await asyncio.sleep ( 60 )
+            minutes += 1
+            if minutes == 60:
+                minutes = 0
+                hour += 1
+
+    client.loop.create_task ( tutorial_uptime () )        
+        
+        
+        
  @client.event
 async def on_member_join(member):
     role1 = "♰ 𝑀𝐸𝑀𝐵𝐸𝑅𝒮 ♰"
