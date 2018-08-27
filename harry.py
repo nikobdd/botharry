@@ -1,7 +1,6 @@
 import random
 import discord
 import asyncio
-import requests
 import json
 import time
 import datetime
