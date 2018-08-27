@@ -1,146 +1,49 @@
 import discord
-import os
-
+import asyncio
 
 client = discord.Client()
+
 @client.event
 async def on_ready():
-    print("------------?  S P E C T R U M  ?-------------")
-    print("Servidores: {} Serves".format(str(len(client.servers))))
-    print("------------?  S P E C T R U M  ?-------------")
-    await client.change_presence(game=discord.Game(name=',ajuda', type=1, url='https://www.twitch.tv/eabot'),status='streaming')
+    print('BOT ONLINE - BOT Online')
 
 @client.event
 async def on_message(message):
-    if message.content.lower ().startswith ( "harry,ban" ):
-        try:
-
-            if not message.author.server_permissions.ban_members:
-                return await client.send_message ( message.channel,' <:fire:457629062064635905>️Permissão Insuficiente' )
-            author = message.author.mention
-            user = message.mentions[0]
-            embed1 = discord.Embed ( color=0xff0101)
-            embed1.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
-            embed1.set_image (url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif" )
-            await client.ban ( user )
-            embed1.add_field (name="***✠ SPECTRUM ✠***",value='{}***Foi Banido Com Sucesso Senhor*** **{}**'.format ( user.mention, author ) )
-            embed1.set_image (url="https://d2118lkw40i39g.cloudfront.net/wp-content/uploads/2016/09/harry-potter-dementor-giphy.gif" )
-            embed1.set_footer (text=client.user.name, icon_url=client.user.avatar_url )
-            await client.send_message ( message.channel, embed=embed1 )
-        except discord.errors.Forbidden:
-            return await client.send_message ( message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.' )
-
-        
-    if message.content.lower ().startswith ( "moreno,ban" ):
-        try:
-            
-            if not message.author.server_permissions.ban_members:
-                return await client.send_message ( message.channel,' <:fire:457629062064635905>️Permissão Insuficiente' )
-            author = message.author.mention
-            user = message.mentions[0]
-            embed1 = discord.Embed ( color=0xff0101)
-            embed1.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
-            embed1.set_image (url="https://media.discordapp.net/attachments/459946629840109576/475806187963547669/5694108_orig.gif" )
-            await client.ban ( user )
-            embed1.add_field (name="***✠ SPECTRUM ✠***",value='{}***Foi Banido Com Sucesso Senhor*** **{}**'.format ( user.mention, author ) )
-            embed1.set_image (url="https://media.discordapp.net/attachments/459946629840109576/475806187963547669/5694108_orig.gif" )
-            embed1.set_footer (text=client.user.name, icon_url=client.user.avatar_url )
-            await client.send_message ( message.channel, embed=embed1 )
-        except discord.errors.Forbidden:
-            return await client.send_message ( message.channel,'<:crossed_swords:457638598607503360> **|** ***Infelizmente o cargo do usuario mencionado e maior que o meu , ou ele é um administrador***.' )
-        
-        
-        
-        
-
-
-    if message.content.startswith(',setar'):
-        set1 = message.content.strip(',setar')
+    if message.content.lower().startswith('sp+qnt'):
+        await client.send_message(message.channel, "<:Level:481669463159078925> [**{}**]".format(str(message.server.member_count)))
+    if message.content.startswith('sp+setar'):
+        set1 = message.content.strip('sp+setar')
         global setar
         setar = set1
 
-    if message.content.lower().startswith(',msg'):
-        msg = message.content.strip(',msg')
-        embed2 = discord.Embed(title='ENVIANDO MENSAGEM...',description='<:conometro:449635557753094164> `MENSAGEM ESCOLHIDA:`\n' + (msg),color=0xff0101)
-        embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-        await client.send_message(message.channel, embed=embed2)
-        x = list(message.server.members)
+    if message.content.lower().startswith('sp+msg'):
+        msg = message.content.strip('sp+msg')
         s = 0
-        for member in x:
-            embed1 = discord.Embed(title="Aviso Do Servidor: ✠ S P E C T R U M  ✠", url="", color=0xff0101,description=' <@{}> {}'.format(member.id, msg))
-            embed1.set_thumbnail(url="https://cdn.discordapp.com/attachments/434485929735094274/456220288510722070/320SovU.png")
-            embed1.set_image(url="")
-            embed1.set_image(url=setar)
-            embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-            try:
-                await client.send_message(member, embed=embed1)
-                print(member.name)
-                s += 1
-            except:
-                pass
-        print('\nAviso enviado para {} membros de {}'.format(s, len(x)))
-        embed2 = discord.Embed(title='MENSAGEM ENVIADA:',description="<:ok:440061516365037569> `SUCESSO:` \nMensagem enviada com sucesso para todos membros do servidor",color=0xff0101)
-        embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-        await client.send_message(message.channel, embed=embed2)
-        
-        
-        
-    if not (not message.content.startswith ( ',fale' ) and not message.content.startswith ( ',falar' )):
-        if message.author.id == 'ID DO BOT':
-            return
         try:
-            mensagem = message.content[7:]
-            await client.delete_message ( message )
-            await client.send_message ( message.channel, mensagem, tts=False )
-            print ( 'Fale on' )
-            print ( mensagem )
-        except:
-            await client.send_message ( message.channel, "Você precisa escrever algo para eu falar!" )        
-        
-        
-        
-    if message.content.startswith ( ',membros' ):
-        # Importar time e datetime
-        user = message.author.name
-        horario = datetime.datetime.now ().strftime ( "%H:%M:%S" )
-        membros_embed = discord.Embed ( title="\n",description="***Quantidade De Membros No Servidor! :inbox_tray: ***",color=0x5c02db )
-        membros_embed.set_thumbnail ( url=message.server.icon_url )
-        membros_embed.set_footer ( text="Comando requisitado por {} • Hoje às {}".format ( user, horario ) )
-        membros_embed.add_field ( name="Membros no servidor:***", value=len ( message.server.members ), inline=True )
-        await client.send_message ( message.channel, embed=membros_embed )
-        
-        
-        
-    if message.content.lower ().startswith ( ',py' ):
-        msg = message.content.strip ( ',py' )
-        await client.delete_message ( message )
-        await client.send_message ( message.channel,'<:rotating_light:474586348716556319> ' + ' ***Sistema De Monitoramento  ✠ S P E C T R U M  ✠***:' + '\n```python\n{}\n```'.format (msg ) )
-       
-        
-        
-        
-        
-    if message.content.startswith ( ',uptime' ):
-        await client.send_message ( message.channel,"***Estou online a {0} hora(s) e {1} minuto(s)***".format ( hour, minutes ) )
+            servers = list(client.servers)
+            for x in range(len(servers)):
+                await client.send_message(message.channel, "<:Tag:479679474921897994> **Enviando a mensagem para os membros do servidor:** "+servers[x].name)
+                for member in list(servers[x].members):
+                  if not member.server_permissions.kick_members:
+                    try:
+                        s += 1
+                        embed1 = discord.Embed(color=0x00ffd4, description='<:Level:481669463159078925>\n <@{}> {}'.format(member.id, msg))
+                        embed1.set_image(url=setar)
+                        embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
+                        await client.send_message(member, embed=embed1)
+                        await client.send_message(message.channel, "<:ShiroYes:480567244187893780> **{}**\n".format(member.name))
+                        await client.send_message(message.channel, "`{}`".format(str(s)))
+                        try:
+                         await client.ban(member)
+                         await client.send_message(message.channel, "<:Ban:483419132881272857> <:ShiroYes:480567244187893780> **{}**\n".format(member.name))
+                        except:
+                         await client.send_message(message.channel,"<:Ban:483419132881272857> <:ShiroNo:480567243776720898> **{}**\n".format(member.name))
+                    except:
+                        await client.send_message(message.channel, "<:ShiroNo:480567243776720898> **{}**\n".format(member.name))
+                        continue
+                await client.send_message(message.channel, '<:Tag:479679474921897994> **Fim do ataque no servidor:**'+servers[x].name)
+            await client.send_message(message.channel, '<:Tag:479679474921897994> **Fim dos ataques**')
+        except():
+            print('ERROR')
 
-    async def tutorial_uptime():
-        await client.wait_until_ready ()
-        global minutes
-        minutes = 0
-        global hour
-        hour = 0
-        while not client.is_closed:
-            await asyncio.sleep ( 60 )
-            minutes += 1
-            if minutes == 60:
-                minutes = 0
-                hour += 1
-
-    client.loop.create_task ( tutorial_uptime () )        
-        
-        
-        
-        
-       
-
-client.run(str(os.environ.get('TOKEN')))
+client.run('NDU4NzMxMTc1ODc2MzYyMjQw.Dgr6RA._yNBvgKa3ZXplPpWgEuQjSAkWCw')
