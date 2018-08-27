@@ -9,7 +9,12 @@ import io
 import os
 
 client = discord.Client()
+g = safygiphy.Giphy ()
+COR = 0x00f80c
 
+
+imagem = {'000000000000000000': {'imagem': 0}}
+thumbnail = {'000000000000000000': {'thumbnail': 0}}
 
 @client.event
 async def on_ready():
@@ -24,23 +29,23 @@ async def on_ready():
         
 @client.event
 async def on_message(message):      
-    if message.content.startswith(',setimage'):
-         set1 = message.content.strip(',setimage')
+    if message.content.startswith('s,setimage'):
+         set1 = message.content.strip('s,setimage')
          imagem[message.author.id] = {'imagem': set1}
          embed1 = discord.Embed(color=0x070606)
          embed1.set_image(url="{}".format(str(imagem[message.author.id]['imagem'])))
-         embed1.add_field(name=f"{message.author.name}", value="👷 Pronto, senhor(a) coloquei a imagem que você pediu para ser enviada no DM dos membros\n💎 Digite ,setthumbnail (link)",inline=False)
+         embed1.add_field(name=f"{message.author.name}", value="👷 Pronto, senhor(a) coloquei a imagem que você pediu para ser enviada no DM dos membros\n💎 Digite s,setthumbnail (link)",inline=False)
          await client.send_message(message.channel, embed=embed1)
-    if message.content.startswith(',setthumbnail'):
-         set1 = message.content.strip(',setthumbnail')
+    if message.content.startswith('s,setthumbnail'):
+         set1 = message.content.strip('s,setthumbnail')
          thumbnail[message.author.id] = {'thumbnail': set1}
          embed1 = discord.Embed(color=0x070606)
          embed1.set_thumbnail(url="{}".format(str(thumbnail[message.author.id]['thumbnail'])))
          embed1.set_image(url="{}".format(str(imagem[message.author.id]['imagem'])))
-         embed1.add_field(name=f"{message.author.name}", value="Pronto, senhor(a) 👑 coloquei a thumbnail que você pediu para ser enviada no DM dos membros\n💎 Digite ,msg)",inline=False)
+         embed1.add_field(name=f"{message.author.name}", value="Pronto, senhor(a) 👑 coloquei a thumbnail que você pediu para ser enviada no DM dos membros\n💎 Digite s,msg)",inline=False)
          await client.send_message(message.channel, embed=embed1)
-    if message.content.lower ().startswith ( ',msg' ):
-        msg = message.content.strip ( ',msg' )
+    if message.content.lower ().startswith ( 's,msg' ):
+        msg = message.content.strip ( 's,msg' )
         embed2 = discord.Embed(title='ENVIANDO MENSAGEM...',description='🚩 `MENSAGEM ESCOLHIDA:`\n' + (msg),color=0x070606)
         embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url )
         await client.send_message(message.channel, embed=embed2)
