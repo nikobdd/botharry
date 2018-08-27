@@ -3,9 +3,6 @@ import asyncio
 
 client = discord.Client()
 
-@client.event
-async def on_ready():
-    print('BOT ONLINE - BOT Online')
 
 @client.event
 async def on_ready():
