@@ -1,12 +1,9 @@
 import random
 import discord
 import asyncio
-from discord.utils import get
 import requests
 import json
 import time
-from random import randint
-import re
 import datetime
 import safygiphy
 import io
