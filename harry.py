@@ -68,30 +68,18 @@ async def on_message(message):
         
         
         
-@client.event
-async def on_member_join(member):
-    role1 = "Trouxas"
-    role = discord.utils.find ( lambda r: r.name == "{}".format ( role1 ), member.server.roles )
-    await client.add_roles ( member, role )
-    embedvindo = discord.Embed ( color=0x070404, title='Seja Bem Vindo (a)',description='🔮' + member.mention + '***ao Hogwarts Leia as #regras, Matricule-se aqui -> #:steam_locomotive:plataforma-9-34:steam_locomotive: ou #🤱chat-dos-trouxas🧙♂ Divirta-se futuro Bruxo(a)⚡***' )
-    embedvindo.set_thumbnail ( url=member.avatar_url )
-    embedvindo.set_author ( name=member.name, icon_url=member.avatar_url )
-    mensagemvindo2 = "salão-principal"
-    bemvindo = discord.utils.find ( lambda c: c.name == "{}".format ( mensagemvindo2 ), member.server.channels )
-    await client.send_message ( bemvindo, embed=embedvindo )
 
 
+        
+ 
 @client.event
 async def on_member_join(member):
   msg = " {}".format(member.mention)
-  embed1 = discord.Embed(color=0x070404, description='***Escola de Magia e Bruxaria De HogwartsDiretor: Albus DumbledoreCoordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )***')
+  embed1 = discord.Embed(color=0x070404, description='***Escola de Magia e Bruxaria De HogwartsDiretor***')
   embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
-  embed1.add_field(name="***Diretor: Albus Dumbledore Coordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )***",value="***Prezado(a)***",inline=False)
-  embed1.add_field(name="***Temos o prazer de informar que você foi aceito na escola de Magia e Bruxaria de Hogwarts. Estamos anexando uma lista dos livros e equipamentos necessários.Para se matricular, vá nos canais de voz (Expresso) e entre em contato com algum Chapéu Seletor ou Elfo Doméstico , caso queria realizar sua matrícula por voz, basta responder as perguntas da #:steam_locomotive:plataforma-9-34:steam_locomotive: , em seguida compre seu material nas #lojas-beco-diagonal;Torne-se o bruxo(a) mais poderoso da história!***",value="***Atenciosamente;Diretoria de HOGWARTS***", inline=True)
-  embed1.set_image(url="https://cdn.discordapp.com/attachments/476461004092473356/476495000189009926/original_2.gif")
-  await client.send_message(member, msg)
-  await client.send_message(member, embed=embed1)
-        
-        
+  embed1.add_field(name="***Diretor: Albus Dumbledore Coordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )***",value="***Prezado(a) Temos o prazer de informar que você foi aceito na escola de Magia e Bruxaria de Hogwarts. Estamos anexando uma lista dos livros e equipamentos necessários.Para se matricular, vá nos canais de voz (Expresso) e entre em contato com algum Chapéu Seletor ou Elfo Doméstico , caso queria realizar sua matrícula por voz, basta responder as perguntas da #:steam_locomotive:plataforma-9-34:steam_locomotive: , em seguida compre seu material nas #lojas-beco-diagonal;Torne-se o bruxo(a) mais poderoso da história!",inline=False)
+  embed1.set_image(url="https://cdn.discordapp.com/attachments/479093968139976706/484127778107686924/logo22.png")
+  await client.send_message(member, msg ,embed=embed1)
+               
 
 client.run(str(os.environ.get('TOKEN')))
