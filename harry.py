@@ -80,6 +80,17 @@ async def on_member_join(member):
     bemvindo = discord.utils.find ( lambda c: c.name == "{}".format ( mensagemvindo2 ), member.server.channels )
     await client.send_message ( bemvindo, embed=embedvindo )
 
+
+@client.event
+async def on_member_join(member):
+  msg = " {}".format(member.mention)
+  embed1 = discord.Embed(color=0x070404, description='***:hogwarts2:Escola de Magia e Bruxaria De Hogwarts:hogwarts2:***')
+  embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
+  embed1.add_field(name="***Diretor: Albus Dumbledore Coordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )***",value="***Prezado(a)***",inline=False)
+  embed1.add_field(name="***Temos o prazer de informar que você foi aceito na escola de Magia e Bruxaria de Hogwarts. Estamos anexando uma lista dos livros e equipamentos necessários.Para se matricular, vá nos canais de voz "Expresso" e entre em contato com algum Chapéu Seletor ou Elfo Doméstico , caso queria realizar sua matrícula por voz, basta responder as perguntas da #:steam_locomotive:plataforma-9-34:steam_locomotive: , em seguida compre seu material nas #lojas-beco-diagonal;Torne-se o bruxo(a) mais poderoso da história!***",value="***Atenciosamente;Diretoria de HOGWARTS***", inline=True)
+  embed1.set_image(url="https://cdn.discordapp.com/attachments/476461004092473356/476495000189009926/original_2.gif")
+  await client.send_message(member, msg)
+  await client.send_message(member, embed=embed1)
         
         
 
