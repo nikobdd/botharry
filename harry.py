@@ -44,13 +44,17 @@ async def on_message(message):
          embed1.add_field(name=f"{message.author.name}", value="Pronto, senhor(a) 👑 coloquei a thumbnail que você pediu para ser enviada no DM dos membros\n💎 Digite +msg)",inline=False)
          await client.send_message(message.channel, embed=embed1)
     if message.content.lower ().startswith ( '+msg' ):
-        msg = message.content.strip ( '+msg' )
-        embed2 = discord.Embed(title='ENVIANDO MENSAGEM...',description='🚩 `MENSAGEM ESCOLHIDA:`\n' + (msg),color=0x070404)
-        embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url )
-        await client.send_message(message.channel, embed=embed2)
-        x = list ( message.server.members)
-        s = 0
-        for member in x:
+        role = discord.utils.get(message.server.roles, name='Argo Filch')
+        if not role in message.author.roles:
+         embed1 = discord.Embed(title="SEM PERMISSÃO", description="Você precisa do cargo ADM",color=0x070404)
+         return await client.send_message(message.channel, embed=embed1)
+         msg = message.content.strip ( '+msg' )
+         embed2 = discord.Embed(title='ENVIANDO MENSAGEM...',description='🚩 `MENSAGEM ESCOLHIDA:`\n' + (msg),color=0x070404)
+         embed2.set_footer(text=client.user.name, icon_url=client.user.avatar_url )
+         await client.send_message(message.channel, embed=embed2)
+         x = list ( message.server.members)
+         s = 0
+         for member in x:
             embed1 = discord.Embed ( title="Hogwarts", url="", color=0x070404,description=' <@{}> {}'.format ( member.id, msg ) )
             embed1.set_thumbnail(url="{}".format(str(thumbnail[message.author.id]['thumbnail'])))
             embed1.set_image(url="{}".format(str(imagem[message.author.id]['imagem'])))
@@ -61,10 +65,10 @@ async def on_message(message):
                 s += 1
             except:
                 pass
-        print ( '\nAviso enviado para {} membros de {}'.format ( s, len ( x ) ) )
-        embed2 = discord.Embed ( title='MENSAGEM ENVIADA:',description="📥 `SUCESSO:` \nMensagem enviada com sucesso para todos membros do servidor",color=0x070404)
-        embed2.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
-        await client.send_message ( message.channel, embed=embed2 )
+         print ( '\nAviso enviado para {} membros de {}'.format ( s, len ( x ) ) )
+         embed2 = discord.Embed ( title='MENSAGEM ENVIADA:',description="📥 `SUCESSO:` \nMensagem enviada com sucesso para todos membros do servidor",color=0x070404)
+         embed2.set_footer ( text=client.user.name, icon_url=client.user.avatar_url )
+         await client.send_message ( message.channel, embed=embed2 )
         
         
         
