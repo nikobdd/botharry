@@ -73,7 +73,7 @@ async def on_member_join(member):
     role1 = "Trouxas"
     role = discord.utils.find ( lambda r: r.name == "{}".format ( role1 ), member.server.roles )
     await client.add_roles ( member, role )
-    embedvindo = discord.Embed ( color=0x070404, title='Seja Bem Vindo (a)',description='🔮' + member.mention + '***ao Hogwarts Leia as #regras, Matricule-se aqui -> #:steam_locomotive:plataforma-9-34:steam_locomotive: ou #🤱chat-dos-trouxas🧙♂ Divirta-se futuro Bruxo(a)***' )
+    embedvindo = discord.Embed ( color=0x070404, title='Seja Bem Vindo (a)',description='🔮' + member.mention + '***ao Hogwarts Leia as #regras, Matricule-se aqui -> #:steam_locomotive:plataforma-9-34:steam_locomotive: ou #🤱chat-dos-trouxas🧙♂ Divirta-se futuro Bruxo(a)⚡***' )
     embedvindo.set_thumbnail ( url=member.avatar_url )
     embedvindo.set_author ( name=member.name, icon_url=member.avatar_url )
     mensagemvindo2 = "salão-principal"
