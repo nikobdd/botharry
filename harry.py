@@ -80,9 +80,7 @@ async def on_member_join(member):
   embed1 = discord.Embed ( title="Hogwarts", url="", color=0x474545,description='Prezado(a) {}'.format(member.mention))
   embed1.add_field(name="***Diretor: Albus Dumbledore Coordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )***",value="*** Temos o prazer de informar que você foi aceito na escola de Magia e Bruxaria de Hogwarts. Estamos anexando uma lista dos livros e equipamentos necessários.Para se matricular, vá nos canais de voz (Expresso) e entre em contato com algum Chapéu Seletor ou Elfo Doméstico , caso queria realizar sua matrícula por voz, basta responder as perguntas da #:steam_locomotive:plataforma-9-34:steam_locomotive: , em seguida compre seu material nas #lojas-beco-diagonal;Torne-se o bruxo(a) mais poderoso da história!***",inline=False)
   embed1.set_image(url="https://cdn.discordapp.com/attachments/479093968139976706/484127778107686924/logo22.png")
-  mensagemvindo2 = "🚂plataforma-9-34🚂"
-  bemvindo = discord.utils.find(lambda c: c.name == "{}".format(mensagemvindo2), member.server.channels)
-  await client.send_message(member,bemvindo,embed=embedvindo,embed=embed1)
+  await client.send_message(member,embed=embed1)
 
 
 client.run(str(os.environ.get('TOKEN')))
