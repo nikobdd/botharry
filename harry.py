@@ -21,7 +21,7 @@ async def on_ready():
     print ( "------------Hogwarts-------------" )
     print ( "Servidores: {} Serves".format ( str ( len ( client.servers ) ) ) )
     print ( "------------ Hogwarts -------------" )
-    await client.change_presence(game=discord.Game(name=" {} 🔮 Alunos 🔮 ".format(str(len(set(client.get_all_members())))), type=1, url='https://www.twitch.tv/shiro'),status='streaming')
+    await client.change_presence(game=discord.Game(name=" {} 🔮Alunos🔮 ".format(str(len(set(client.get_all_members())))), type=1, url='https://www.twitch.tv/shiro'),status='streaming')
             
         
         
