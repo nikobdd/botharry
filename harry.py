@@ -75,6 +75,7 @@ async def on_message(message):
         
 @client.event
 async def on_member_join(member):
+  embed1 = discord.Embed(color=0x070404, description='***..***')
   embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
   embed1 = discord.Embed ( title="<484155389470965760> Escola de Magia e Bruxaria De Hogwarts <484155389470965760>", url="Diretor: Albus Dumbledore", color=0x474545,description='Coordenadores das casas ( Grifinória, Sonserina, Lufa lufa, Corvinal )\n\n Prezado(a) {}'.format(member.mention))
   embed1.add_field(name="***\nTemos o prazer de informar que você foi aceito na escola de Magia e Bruxaria de Hogwarts. Estamos anexando uma lista dos livros e equipamentos necessários.Para se matricular, vá nos canais de voz (Expresso) e entre em contato com algum Chapéu Seletor ou Elfo Doméstico , caso queria realizar sua matrícula por voz, basta responder as perguntas da <#478187966473306119> <#481992231662649364> em seguida compre seu material... Torne-se o bruxo(a) mais poderoso da história!\n***",value="***\nAtenciosamente\n Diretoria De HOGWARTS***",inline=False)
