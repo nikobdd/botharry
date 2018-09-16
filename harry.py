@@ -7,7 +7,7 @@ import datetime
 import safygiphy
 import io
 import os
-import request
+import requests
 
 client = discord.Client()
 g = safygiphy.Giphy ()
