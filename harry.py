@@ -19,12 +19,19 @@ thumbnail = {'000000000000000000': {'thumbnail': 0}}
 
 @client.event
 async def on_ready():
-    print ( "------------Hogwarts-------------" )
-    print ( "Servidores: {} Serves".format ( str ( len ( client.servers ) ) ) )
-    print ( "------------ Hogwarts -------------" )
-    await client.change_presence(game=discord.Game(name="  ".format(str(len(set(client.get_all_members())))), type=1, url='https://www.twitch.tv/shiro'),status='streaming')
-            
-        
+    while True:
+        await client.change_presence(game=discord.Game(name="{} Usuários".format(str(len(set(client.get_all_members())))), type=1,url='https://www.twitch.tv/ocupidex'), status='streaming')
+        await asyncio.sleep(10)
+
+        await client.change_presence(game=discord.Game(name="Hogwarts", type=1,url='https://www.twitch.tv/ocupidex'), status='streaming')
+        await asyncio.sleep(10)
+        # Ele vai esperar 60 segundos para mudar para o proximo status
+        await client.change_presence(game=discord.Game(name="The Hell Ψ roubou minha varinha", type=1,url='https://www.twitch.tv/ocupidex'), status='streaming')
+        await asyncio.sleep(10)
+
+        await client.change_presence(game=discord.Game(name="Luuh staff mais dlc", type=1,url='https://www.twitch.tv/ocupidex'), status='streaming')
+        await asyncio.sleep(10)
+        # Depois que esperar 60 segundos ele n vai ter mais oq mudar de status, voltando para o primeiro e refazendo o ciclo
         
         
 @client.event
