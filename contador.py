@@ -1,6 +1,7 @@
 import discord
 import datetime
 import json
+import os
 client = discord.Client()
 
 contador = {'000000000000000000': {'serverid': '000000000000000000', 'canalid': '000000000000000000', 'conta-at': 0}}
