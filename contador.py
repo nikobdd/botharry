@@ -2,6 +2,7 @@ import discord
 import datetime
 import json
 import os
+
 client = discord.Client()
 
 contador = {'000000000000000000': {'serverid': '000000000000000000', 'canalid': '000000000000000000', 'conta-at': 0}}
@@ -25,7 +26,7 @@ async def on_message(message):
             contador[message.server.id] = {'conta-at': 1}
         set1 = message.content[11:]
         if '{}'.format(set1) == 'on':
-         await client.send_message(message.channel, '<:EmoteConfig:486869372162539520> O canal {} foi definido com sucesso! <:switchON:487455703112613919>'.format(message.channel.mention))
+         await client.send_message(message.channel, 'O canal {} foi definido com sucesso! <:switchON:487455703112613919>'.format(message.channel.mention))
          if message.server.id in texto:
           numeros = str(len(message.server.members)).replace("0", "setar-zero").replace("1", "setar-um").replace("2","setar-dois").replace("3", "setar-tres").replace("4", "setar-quatro").replace("5", "setar-cinco").replace("6","setar-seis").replace("7", "setar-sete").replace("8", "setar-oito").replace("9", "setar-nove")
           await client.edit_channel(message.channel, topic="<a:Bouncycat:528337139155599360> Membros: " + str(numeros).replace("setar-zero","<:00V:528673420582322186>").replace("setar-um", "<:01V:528673424420241418>").replace("setar-dois","<:02V:528673427020709888>").replace("setar-tres", "<:03V:528673426454478868>").replace("setar-quatro", "<:04V:528673426404147203>").replace("setar-cinco", "<:05V:528673426483707905>").replace("setar-seis","<:06V:528673425628332033>").replace("setar-sete", "<:07V:528673425628069910>").replace("setar-oito","<:08V:528673426462998529>").replace("setar-nove", "<:09V:528673426966183946>") + ' {}'.format(str(texto[message.server.id]['texto'])))
@@ -66,7 +67,7 @@ async def on_message(message):
         with open('texto.json', 'w') as f:
             json.dump(texto, f)
      else:
-        await client.send_message(message.channel, '<:stop:485944474703233034> Você precisa ser um administrador.')
+        await client.send_message(message.channel, 'Você precisa ser um administrador.')
     if message.content.startswith('t!contador editar'):
      if message.author.server_permissions.administrator:
         with open('contador.json', 'r') as f:
@@ -76,22 +77,22 @@ async def on_message(message):
         set1 = message.content[18:]
         texto[message.server.id] = {'serverid': message.server.id, 'texto': set1}
         if '{}'.format(set1) == '':
-         await client.send_message(message.channel, '<:EmoteConfig:486869372162539520> **Você precisa colocar um texto para definir.**')
+         await client.send_message(message.channel, ' **Você precisa colocar um texto para definir.**')
         else:
          if contador[message.server.id]['conta-at'] == 0:
           iddocanal = "{}".format(str(contador[message.server.id]['canalid']))
           canaleditar = client.get_channel(iddocanal)
           numeros = str(len(message.server.members)).replace("0", "setar-zero").replace("1", "setar-um").replace("2","setar-dois").replace("3", "setar-tres").replace("4", "setar-quatro").replace("5", "setar-cinco").replace("6","setar-seis").replace("7", "setar-sete").replace("8", "setar-oito").replace("9", "setar-nove")
           await client.edit_channel(message.channel, topic="<a:picafeliz:489822390151282693> Membros: " + str(numeros).replace("setar-zero","<:00V:528673420582322186>").replace("setar-um", "<:01V:528673424420241418>").replace("setar-dois","<:02V:528673427020709888>").replace("setar-tres", "<:03V:528673426454478868>").replace("setar-quatro", "<:04V:528673426404147203>").replace("setar-cinco", "<:05V:528673426483707905>").replace("setar-seis","<:06V:528673425628332033>").replace("setar-sete", "<:07V:528673425628069910>").replace("setar-oito","<:08V:528673426462998529>").replace("setar-nove", "<:09V:528673426966183946>") + ' {}'.format(str(texto[message.server.id]['texto'])))
-          await client.send_message(canaleditar, '<:EmoteConfig:486869372162539520> Você definiu o texto do contador!\n<:EmoteChannel:485919232924844033>**Texto:** {}'.format(set1))
+          await client.send_message(canaleditar, 'Você definiu o texto do contador!\n<:EmoteChannel:485919232924844033>**Texto:** {}'.format(set1))
          else:
-          await client.send_message(message.channel, '<:EmoteConfig:486869372162539520> Você definiu o texto do contador!\n<:EmoteChannel:485919232924844033>**Texto:** {}'.format(set1))
+          await client.send_message(message.channel, 'Você definiu o texto do contador!\n<:EmoteChannel:485919232924844033>**Texto:** {}'.format(set1))
         with open('contador.json', 'w') as f:
             json.dump(contador, f)
         with open('texto.json', 'w') as f:
             json.dump(texto, f)
      else:
-      await client.send_message(message.channel, '<:stop:485944474703233034> Você precisa ser um administrador.')
+      await client.send_message(message.channel, 'Você precisa ser um administrador.')
 @client.event
 async def on_member_join(member):
     with open('contador.json', 'r') as f:
