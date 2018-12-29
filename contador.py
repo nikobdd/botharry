@@ -45,18 +45,18 @@ async def on_message(message):
           await client.send_message(message.channel, '<:EmoteConfig:486869372162539520> Você precisa definir o contador antes de remover as definições.')
 
         if '{}'.format(set1) == '':
-         embed = discord.Embed(description="Olá senhor(a) **{}**, Seja bem vindo(a) ao painel de configurações, aqui você pode modificar algumas configurações do seu contador.".format(message.author.name), color=0xe081e4)
+         embed = discord.Embed(description="Olá senhor(a) **{}**, Seja bem vindo(a) ao painel de configurações, aqui você pode modificar algumas configurações do seu contador.".format(message.author.name), color=0x0d1a0e)
          embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
          if contador[message.server.id]['conta-at'] == 0:
           iddocanal = "{}".format(str(contador[message.server.id]['canalid']))
           canaleditar = client.get_channel(iddocanal)
-          embed.add_field(name='[On] = Define o canal do contador:', value='<:switchON:487455703112613919> Configuração definida\n**Canal:** {}\n**Para desativar:**```md\n* dpcontador off\n```'.format(canaleditar.mention))
+          embed.add_field(name='[On] = Define o canal do contador:', value='Configuração definida\n**Canal:** {}\n**Para desativar:**```md\n* t!contador off\n```'.format(canaleditar.mention))
          else:
-          embed.add_field(name='[Off] = Define o canal do contador:', value='<:switchOFF:486869487610757120> Configuração não definida |** Para definir:**```md\n* dpcontador on\n```')
+          embed.add_field(name='[Off] = Define o canal do contador:', value='Configuração não definida |** Para definir:**```md\n* t!contador on\n```')
          if message.server.id in texto:
-          embed.add_field(name='[Editar] = Define o texto do contador:', value='<:switchON:487455703112613919> Configuração definida |\n**Texto:** {}\n**Para editar:**  ```md\n* dpcontador editar > texto\n```'.format(str(texto[message.server.id]['texto'])))
+          embed.add_field(name='[Editar] = Define o texto do contador:', value='Configuração definida |\n**Texto:** {}\n**Para editar:**  ```md\n* t!contador editar > texto\n```'.format(str(texto[message.server.id]['texto'])))
          else:
-          embed.add_field(name='[Editar] = Define o texto do contador:', value='<:switchOFF:486869487610757120> Configuração não definida |** Para definir:**  ```md\n* dpcontador editar > texto \n```')
+          embed.add_field(name='[Editar] = Define o texto do contador:', value='Configuração não definida |** Para definir:**  ```md\n* t!contador editar > texto \n```')
          embed.set_thumbnail(url="https://cdn.discordapp.com/icons/522914004251836417/82941e6e16b0b1166db1c0ffb4c0ef9f.jpg?size=2048")
          embed.set_footer(text=message.server.name, icon_url=message.server.icon_url)
          embed.timestamp = datetime.datetime.utcnow()
