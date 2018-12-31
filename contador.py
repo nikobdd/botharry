@@ -140,7 +140,8 @@ async def on_member_remove(member):
 
 @client.event
 async def on_member_join(member):
-    cargo = discord.utils.get(member.server.roles, id='<@529373926334136352>')
+
+    cargo = discord.utils.get(member.server.roles, name='Sem Registro 👻')
     await client.add_roles(member, cargo)
         
         
