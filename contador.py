@@ -138,6 +138,10 @@ async def on_member_remove(member):
         numeros = str(len(servidor.members)).replace("0", "setar-zero").replace("1", "setar-um").replace("2", "setar-dois").replace("3", "setar-tres").replace("4", "setar-quatro").replace("5", "setar-cinco").replace("6", "setar-seis").replace("7", "setar-sete").replace("8", "setar-oito").replace("9", "setar-nove")
         await client.edit_channel(canaleditar, topic="<a:Bouncycat:528337139155599360> Membros: " + str(numeros).replace("setar-zero","<:00V:528673420582322186>").replace("setar-um", "<:01V:528673424420241418>").replace("setar-dois","<:02V:528673427020709888>").replace("setar-tres", "<:03V:528673426454478868>").replace("setar-quatro", "<:04V:528673426404147203>").replace("setar-cinco", "<:05V:528673426483707905>").replace("setar-seis", "<:06V:528673425628332033>").replace("setar-sete", "<:07V:528673425628069910>").replace("setar-oito", "<:08V:528673426462998529>").replace("setar-nove", "<:09V:528673426966183946>"))
 
+@client.event
+async def on_member_join(member):
+    cargo = discord.utils.get(member.server.roles, id='529373926334136352')
+    await client.add_roles(member, cargo)
         
         
 client.run(str(os.environ.get('TOKEN')))
